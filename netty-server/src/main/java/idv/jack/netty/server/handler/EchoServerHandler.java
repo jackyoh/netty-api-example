@@ -1,4 +1,4 @@
-package idv.jack.netty.client;
+package idv.jack.netty.server.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -11,7 +11,11 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter{
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg){
+	
+		
 		ByteBuf in = (ByteBuf)msg;
+		String value = "aaaaa";
+		in.writeBytes(value.getBytes());
 		System.out.println("Server received: " + in.toString(CharsetUtil.UTF_8));
 		ctx.write(in);
 	}
